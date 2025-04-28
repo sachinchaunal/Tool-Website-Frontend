@@ -51,7 +51,8 @@ const PPTToPDF = () => {
       formData.append('presentation', selectedFile);
       
       // Send the file to the backend API
-      const response = await axios.post('http://localhost:5000/api/document/ppt-to-pdf', formData, {
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const response = await axios.post(`${apiUrl}/api/document/ppt-to-pdf`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -59,7 +60,7 @@ const PPTToPDF = () => {
 
       if (response.data && response.data.success) {
         setResult({
-          downloadUrl: response.data.downloadUrl,
+          downloadUrl: `${apiUrl}${response.data.downloadUrl}`,
           fileName: response.data.fileName || selectedFile.name.replace(/\.(ppt|pptx)$/i, '.pdf'),
           message: response.data.message || 'PowerPoint converted to PDF successfully!'
         });

@@ -13,6 +13,6 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://toolwebsite-backend.onrender.com"
+    "REACT_APP_API_URL": "https://tool-website-backend.onrender.com"
   }
 } 

@@ -29,7 +29,8 @@ const Contact = () => {
     
     try {
       // Send form data to backend
-      await axios.post('http://localhost:5000/api/contact/send-message', formData);
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      await axios.post(`${apiUrl}/api/contact/send-message`, formData);
       
       // Clear form and show success message
       setFormData({
